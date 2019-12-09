@@ -5,6 +5,7 @@ import App from "./App";
 import Logo1 from "./Logo1";
 import Navbar from "./Navabar";
 import Pizzas from "./Pizzas";
+import MaterialTableDemo from "./Table"; //tabela materialdesign
 import * as serviceWorker from "./serviceWorker";
 //import things ergant for Hasura
 import ApolloClient from "apollo-boost";
@@ -21,6 +22,7 @@ ReactDOM.render(
 );
 ReactDOM.render(<Navbar />, document.getElementById("navbar"));
 ReactDOM.render(<Pizzas />, document.getElementById("pizze"));
+ReactDOM.render(<MaterialTableDemo />, document.getElementById("table"));
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
