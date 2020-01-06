@@ -23,7 +23,7 @@ export default function Logo1() {
   const films = data.meals.map(meals => <p>{meals.name}</p>);
   return (
     <div className="logo1">
-      <header className="App-header">{films[1]}</header>
+      <header className="App-back">{films[1]}</header>
     </div>
   );
 }

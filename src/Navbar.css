@@ -3,3 +3,10 @@
   position: fixed !important;
   width: 100% !important;
 }
+#button1 {
+  color: black;
+
+  background-color: #a7a7a1af;
+
+  border-color: #a7a7a1af;
+}
