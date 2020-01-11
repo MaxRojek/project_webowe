@@ -53,7 +53,7 @@ function Navbar() {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Koszyk
+                More
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="#">
@@ -83,13 +83,24 @@ function Navbar() {
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">
-                Modal title
+                Twój Koszyk
               </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">Tutaj jest całe body</div>
+            <div class="modal-body">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="">
+                    First and last name
+                  </span>
+                </div>
+                <input type="text" class="form-control" />
+                <input type="text" class="form-control" />
+              </div>
+            </div>
+
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">
                 Close

@@ -20,10 +20,10 @@ export default function Logo1() {
   console.log(data);
   console.dir(data);
 
-  const films = data.meals.map(meals => <p>{meals.name}</p>);
+  const dish = data.meals.map(meals => <p>{meals.name}</p>);
   return (
     <div className="logo1">
-      <header className="App-back">{films[1]}</header>
+      <header className="App-back">{dish[0]}</header>
     </div>
   );
 }
