@@ -1,8 +1,9 @@
 import React from "react";
-
+//import React, { useState } from "react";
 import "./Pizzas.css";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
+//import { gql } from "graphql-tag";
 class Menu extends React.Component {
   // pierwsza tabela
   componentWillMount() {
@@ -84,22 +85,35 @@ const Row = ({ id, title, time, type, complete, remove }) => (
   </tr>
 );
 
+const deletedb = gql`
+  mutation MyMutation($id: Int!) {
+    __typename
+    update_Tables(where: { id: { _eq: $id } }, _set: { booked: true }) {
+      returning {
+        id
+      }
+    }
+  }
+`;
+
 const stoliki = gql`
   query MyQuery {
-    Tables {
+    Tables(where: { booked: { _eq: false } }) {
       id
-      outdoor
       size
+      outdoor
       start_time
       end_time
     }
   }
 `;
-const PIZZAS = gql`
-  query pizzas {
-    meals(limit: 2) {
-      id
-      name
+const reserve = gql`
+  mutation MyMutation($id: Int!, $mail: String!, $name: String!, $phone: String!) {
+    __typename
+    insert_reservations(objects: { id_table: $id, mail: $mail, name: $name, phone: $phone }) {
+      returning {
+        id
+      }
     }
   }
 `;
@@ -165,8 +179,22 @@ class Table extends React.Component {
 }
 
 function Pizzas() {
+  //const [addTodo, { data }] = useMutation(deletedb);
+
+  //function savetodb() {
+  let input; // zmienna idstolika
+  let umail; // mail rezerwującego
+  let uname; // imie rezerwującego
+  let uphone; // nr telefonu rezerwującego
+  //let nr = input.value;
+  const [addTodo, { data2 }] = useMutation(deletedb);
+  const [addReserve, { data3 }] = useMutation(reserve);
+  //addTodo();
+  //alert("sukces");
+  // }
+
   function saveInfo() {
-    alert("Kliknięto w link.");
+    alert("zapis");
   }
 
   const { loading, error, data } = useQuery(stoliki);
@@ -183,24 +211,25 @@ function Pizzas() {
   /////////////////////////////////////// połączenie z bazą///////////////////////////////////////////////////////////////
 
   const items = [];
-
+  //<th scope="row">{table_id[index]}</th>
   for (const [index, value] of table_id.entries()) {
     items.push(
       <tr>
-        <th scope="row">{table_id[index]}</th>
-        <td>{table_size[index]}</td>
+        <td id={index}>{table_id[index]}</td>
+        <td id={index}>{table_size[index]}</td>
         <td>{table_outdoor[index]}</td>
         <td>{table_start_time[index]}</td>
         <td>{table_end_time[index]}</td>
         <td>
           <a
+            id={index}
             href="#"
-            //onClick={saveInfo}
+            //onClick={saveInfo(this.id)}
             class="btn btn-secondary btn-lg active"
             role="button"
             aria-pressed="true"
             data-toggle="modal"
-            data-target="#exampleModal"
+            data-target="#exampleModal1"
           >
             +
           </a>
@@ -277,11 +306,11 @@ function Pizzas() {
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row">0</th>
+                  <td>0</td>
                   <td>3</td>
                   <td>true</td>
-                  <td>04:10:00</td>
-                  <td>04:40:00</td>
+                  <td>04:10</td>
+                  <td>04:40</td>
                   <td>
                     <a
                       href="#"
@@ -301,7 +330,7 @@ function Pizzas() {
         </div>
         <div
           class="modal fade"
-          id="exampleModal"
+          id="exampleModal1"
           tabindex="-1"
           role="dialog"
           aria-labelledby="exampleModalLabel"
@@ -311,7 +340,7 @@ function Pizzas() {
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                  Twój Koszyk
+                  Zamów
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
@@ -320,22 +349,66 @@ function Pizzas() {
               <div class="modal-body">
                 <div class="input-group">
                   <div class="input-group-prepend" />
-                  <span class="input-group-text" id="">
-                    First and last name
-                  </span>
                 </div>
-                <input type="text" class="form-control" />
-                <input type="text" class="form-control" />
+                <input
+                  type="text"
+                  ref={node => {
+                    umail = node;
+                  }}
+                  class="form-control"
+                  id="name"
+                  placeholder="mail"
+                />
+                <input
+                  type="text"
+                  ref={node => {
+                    uname = node;
+                  }}
+                  class="form-control"
+                  id="name"
+                  placeholder="imie"
+                />
+                <input
+                  type="text"
+                  ref={node => {
+                    uphone = node;
+                  }}
+                  class="form-control"
+                  placeholder="telefon"
+                />
+                <input
+                  type="text"
+                  ref={node => {
+                    input = node;
+                  }}
+                  class="form-control"
+                  id="inputPas"
+                  placeholder="id stolika"
+                />
               </div>
+              <button type="button" onClick={saveInfo} class="btn btn-secondary" data-dismiss="modal">
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onClick={e => {
+                  e.preventDefault();
+                  addTodo({ variables: { id: input.value } });
+                  addReserve({
+                    variables: { id: input.value, mail: umail.value, name: uname.value, phone: uphone.value }
+                  });
+                  input.value = "";
+                  uname.value = "";
+                  umail.value = "";
+                  uphone.value = "";
+                }}
+              >
+                Book!
+              </button>
             </div>
 
             <div class="modal-footer" />
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">
-              Save changes
-            </button>
           </div>
         </div>
       </div>

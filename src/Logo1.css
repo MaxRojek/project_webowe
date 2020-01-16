@@ -23,5 +23,9 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: rgb(93, 214, 22);
+  color: #a7a7a1;
+}
+.h1,
+h1 {
+  font-size: 150px;
 }

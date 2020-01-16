@@ -10,3 +10,6 @@
 
   border-color: #a7a7a1af;
 }
+.navbar-light .navbar-nav .nav-link {
+  color: black;
+}
