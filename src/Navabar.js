@@ -32,17 +32,7 @@ function Navbar() {
                 Features
               </a>
             </li>
-            <li class="nav-item">
-              <button
-                type="button"
-                id="button1"
-                class="btn btn-primary"
-                data-toggle="modal"
-                data-target="#exampleModal"
-              >
-                Koszyk
-              </button>
-            </li>
+
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -56,14 +46,12 @@ function Navbar() {
                 More
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">
-                  Action
+                <a class="dropdown-item" href="https://github.com/MaxRojek/project_webowe">
+                  Source code on github
                 </a>
-                <a class="dropdown-item" href="#">
-                  Another action
-                </a>
-                <a class="dropdown-item" href="#">
-                  Something else here
+
+                <a class="dropdown-item" href="https://pl.reactjs.org/">
+                  Learn React
                 </a>
               </div>
             </li>

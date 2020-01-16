@@ -9,28 +9,28 @@ class Menu extends React.Component {
   componentWillMount() {
     this.arr = [
       {
-        name: "Mahesh",
-        age: "22",
-        salary: 23000,
-        time: 13.2
+        name: "Proscutto",
+
+        salary: "szynka, pieczarki, ser",
+        price: "13$"
       },
       {
-        name: "John",
-        age: "25",
-        salary: 23000,
-        time: 13.2
+        name: "etna",
+
+        salary: "ser, pomidor, pieczarki, szynka, kiełabsa",
+        price: "45$"
       },
       {
-        name: "Ron",
-        age: "35",
-        salary: 45000,
-        time: 13.2
+        name: "Chicken",
+
+        salary: "ser, pomidor, pieczarki, szynka, kiełabsa",
+        price: "30$"
       },
       {
-        name: "Kim",
-        age: "55",
-        salary: 60000,
-        time: 13.2
+        name: "Kebab",
+
+        salary: "ser, pomidor, pieczarki, szynka, kiełabsa",
+        price: "20$"
       }
     ];
 
@@ -38,12 +38,9 @@ class Menu extends React.Component {
       return (
         <tr>
           <td>{obj.name}</td>
-          <td>{obj.age}</td>
+
           <td>{obj.salary}</td>
-          <td>{obj.time}</td>
-          <td>
-            <button type="button">Click Me!</button>
-          </td>
+          <td>{obj.price}</td>
         </tr>
       );
     });
@@ -55,10 +52,9 @@ class Menu extends React.Component {
         <thead>
           <tr>
             <td>Name</td>
-            <td>Age</td>
-            <td>Salary</td>
-            <td>time</td>
-            <td>Make Order</td>
+
+            <td>składniki</td>
+            <td>cena</td>
           </tr>
         </thead>
 
@@ -254,18 +250,7 @@ function Pizzas() {
             </a>
           </p>
         </div>
-        <div>
-          <a
-            class="btn btn-primary"
-            data-toggle="collapse"
-            href="#collapseExample2"
-            role="button"
-            aria-expanded="false"
-            aria-controls="collapseExample"
-          >
-            Book table!
-          </a>
-        </div>
+
         <div>
           <button
             type="button"
@@ -275,8 +260,9 @@ function Pizzas() {
             role="button"
             aria-expanded="false"
             aria-controls="collapseExample"
+            id="secondary"
           >
-            Zamów stolik
+            Order Table
           </button>
         </div>
       </div>
@@ -286,9 +272,7 @@ function Pizzas() {
         </div>
       </div>
       <div class="collapse" id="collapseExample2">
-        <div class="card card-body">
-          <Table />
-        </div>
+        <div class="card card-body"></div>
       </div>
       <div class="collapse" id="collapseExample3">
         <div class="card card-body">
@@ -304,27 +288,7 @@ function Pizzas() {
                   <th scope="col">Order</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>0</td>
-                  <td>3</td>
-                  <td>true</td>
-                  <td>04:10</td>
-                  <td>04:40</td>
-                  <td>
-                    <a
-                      href="#"
-                      onClick={saveInfo}
-                      class="btn btn-secondary btn-lg active"
-                      role="button"
-                      aria-pressed="true"
-                    >
-                      +
-                    </a>
-                  </td>
-                </tr>
-                {items}
-              </tbody>
+              <tbody>{items}</tbody>
             </table>
           </div>
         </div>

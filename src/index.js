@@ -6,7 +6,7 @@ import Logo2 from "./Logo2";
 import Navbar from "./Navabar";
 import Pizzas from "./Pizzas";
 import Flexcontainer from "./Flexcontainer";
-import Table from "./Booktable";
+
 import * as serviceWorker from "./serviceWorker";
 //import things ergant for Hasura
 import ApolloClient from "apollo-boost";
@@ -32,6 +32,7 @@ ReactDOM.render(
 ReactDOM.render(<Flexcontainer />, document.getElementById("container"));
 
 ReactDOM.render(<Logo2 />, document.getElementById("logo2"));
+//ReactDOM.render(<Blur />, document.getElementById("blurelement"));
 //ReactDOM.render(<Logo2 />, document.getElementById("logo2"));
 //ReactDOM.render(<App />, document.getElementById("questionary"));
 // If you want your app to work offline and load faster, you can change

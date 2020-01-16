@@ -25,7 +25,11 @@ export default function Logo1() {
     <div className="logo1">
       <header className="App-back">
         <div class="page-header">
-          <h1>Time to eat </h1>
+          <h2>
+            <h1>
+              <x>Time to eat </x>
+            </h1>
+          </h2>
         </div>
       </header>
     </div>

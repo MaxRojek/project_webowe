@@ -23,9 +23,17 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: #a7a7a1;
+  color: #1a1a19;
 }
+
 .h1,
 h1 {
-  font-size: 150px;
+  background-color: #b8c2bf9f;
+  border: 20px solid #a1a7a513;
+  width: 98vw;
+  border-radius: 25px;
+}
+.x,
+x {
+  font-size: 45px;
 }

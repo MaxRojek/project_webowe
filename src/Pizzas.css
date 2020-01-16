@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: row;
   background-color: #a7a7a1;
-  justify-content: center;
+
+  justify-content: space-around;
 }
 
 .flex-container > div {
@@ -53,4 +54,16 @@
 }
 #app .table .header div {
   cursor: pointer;
+}
+.btn-secondary {
+  background-color: red;
+}
+.btn-primary {
+  background-color: red;
+}
+.btn-primary:hover {
+  transform: scale(1.5);
+}
+#secondary:hover {
+  transform: scale(1.5);
 }
